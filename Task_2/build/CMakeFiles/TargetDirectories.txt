@@ -1,0 +1,6 @@
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/func0.dir
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/func1.dir
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/main.dir
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/test.dir
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/edit_cache.dir
+/home/user/Documents/453501/ОАиП/LR8/Task_2/build/CMakeFiles/rebuild_cache.dir

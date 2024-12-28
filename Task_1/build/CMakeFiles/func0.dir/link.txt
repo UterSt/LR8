@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfunc0.a CMakeFiles/func0.dir/fWorkWithFile.cpp.o
+/usr/bin/ranlib libfunc0.a
