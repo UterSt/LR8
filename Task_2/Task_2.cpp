@@ -13,7 +13,7 @@ struct students
     } number;
 };
 
-void InputOfficers(students& array)
+void InputStudent(students& array)
 {
     std::cout << "Введите ФИО абитуриента: ";
     std::cin.ignore();
@@ -117,15 +117,60 @@ void Number(students* array, int size)
     delete[] studentsG;
 }
 
-int main()
+void SaveToFile(students* array, int size, std::string& filename)
 {
-    int size = 0;
-    std::cout << "Введите количество абитуриентов для записи: ";
-    std::cin >> size;
-    students* array = new students[size];
+    std::ofstream file(filename);
     for (int i = 0; i < size; ++i)
     {
-        InputOfficers(array[i]);
+        file << array[i].FIO << "|" << array[i].city << "|" << array[i].number.bal << std::endl;
+    }
+    file.close();
+}
+
+void LoadFromFile(students*& array, int& size, std::string& filename)
+{
+    std::ifstream file(filename);
+    if (!file.is_open())
+    {
+        std::cerr << "Ошибка открытия файла." << std::endl;
+        return;
+    }
+    size = 0;
+    std::string line;
+    while (std::getline(file, line))
+    {
+        size++;
+    }
+    file.clear();
+    file.seekg(0);
+    array = new students[size];
+    for (int i = 0; i < size; ++i)
+    {
+        std::getline(file, line);
+        int pos1 = line.find('|');
+        int pos2 = line.find('|', pos1 + 1);
+        array[i].FIO = line.substr(0, pos1);
+        array[i].city = line.substr(pos1 + 1, pos2 - pos1 - 1);
+        array[i].number.bal = std::stod(line.substr(pos2 + 1));
+    }
+    file.close();
+}
+
+int main()
+{
+    std::string filename = "abituri.txt";
+    int size = 0;
+    students* array = nullptr;
+    LoadFromFile(array, size, filename);
+    if (size == 0)
+    {
+        std::cout << "Введите количество абитуриентов для записи: ";
+        std::cin >> size;
+        array = new students[size];
+        for (int i = 0; i < size; ++i)
+        {
+            InputStudent(array[i]);
+        }
     }
     int stope = 1;
     while (stope != 0)
@@ -149,7 +194,7 @@ int main()
             array = ResizeArray(array, size, size + dop);
             for (int i = size; i < size + dop; ++i)
             {
-                InputOfficers(array[i]);
+                InputStudent(array[i]);
             }
             size += dop;
         }
@@ -180,6 +225,7 @@ int main()
             Number(array, size);
         }
     }
+    SaveToFile(array, size, filename);
     delete[] array;
     return 0;
 }
