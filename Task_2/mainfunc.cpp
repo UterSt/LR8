@@ -84,7 +84,6 @@ void Number(students* array, int size)
 
     for (int i = 0; i < size; ++i)
     {
-        std::cout << "Проверяем студента: " << array[i].FIO << ", город: " << array[i].city << ", балл: " << array[i].number.bal << std::endl; // Отладочная информация
         if (array[i].city == "Гомель") 
         {
             if (array[i].number.bal >= 4.5)

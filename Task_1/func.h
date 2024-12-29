@@ -1,6 +1,6 @@
 #include <string>
 
-struct officers
+typedef struct
 {
     char FIO[100];
     int id;
@@ -10,7 +10,7 @@ struct officers
     } number;
     int tarif;
     int zp;
-};
+} officers;
 
 void InputOfficers(officers& array);
 void Prosmotr(officers* array, int size);

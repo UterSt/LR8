@@ -1,6 +1,6 @@
 #include <string>
 
-struct students
+typedef struct
 {
     std::string FIO;
     std::string city;
@@ -8,7 +8,7 @@ struct students
     {
         double bal;
     } number;
-};
+} students;
 
 void InputStudent(students& array);
 void Prosmotr(students* array, int size);
