@@ -1,14 +1,5 @@
 #include <string>
-
-typedef struct
-{
-    std::string FIO;
-    std::string city;
-    union number
-    {
-        double bal;
-    } number;
-} students;
+#include "struct.h"
 
 void InputStudent(students& array);
 void Prosmotr(students* array, int size);
